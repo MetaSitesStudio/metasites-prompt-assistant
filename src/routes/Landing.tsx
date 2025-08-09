@@ -26,8 +26,58 @@ export default function Landing(){
             </div>
           </div>
         </div>
+           </section>
+
+      {/* --- Features --- */}
+      <section id="features" className="max-w-7xl mx-auto px-4 lg:px-8 pb-20">
+        <h2 className="text-3xl font-bold">Features</h2>
+        <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="glass rounded-3xl p-6">
+            <div className="text-lg font-semibold">Smart Follow-ups</div>
+            <p className="mt-2 text-white/80">Asks relevant questions to refine your idea.</p>
+          </div>
+          <div className="glass rounded-3xl p-6">
+            <div className="text-lg font-semibold">Enhanced Prompt</div>
+            <p className="mt-2 text-white/80">Builds a polished, execution-ready prompt.</p>
+          </div>
+          <div className="glass rounded-3xl p-6">
+            <div className="text-lg font-semibold">Variations & Test Drive</div>
+            <p className="mt-2 text-white/80">Try alternates or preview output instantly.</p>
+          </div>
+        </div>
       </section>
+
+      {/* --- How it works --- */}
+      <section id="how" className="max-w-7xl mx-auto px-4 lg:px-8 pb-20">
+        <h2 className="text-3xl font-bold">How it works</h2>
+        <ol className="mt-6 space-y-4 text-white/90">
+          <li><span className="font-semibold">1.</span> Describe your goal → get 3–6 smart follow-up questions.</li>
+          <li><span className="font-semibold">2.</span> Answer briefly → we generate an enhanced prompt.</li>
+          <li><span className="font-semibold">3.</span> Get variations or run a quick test drive.</li>
+        </ol>
+      </section>
+
+      {/* --- Pricing --- */}
+      <section id="pricing" className="max-w-7xl mx-auto px-4 lg:px-8 pb-24">
+        <h2 className="text-3xl font-bold">Pricing</h2>
+        <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="glass rounded-3xl p-6">
+            <div className="text-lg font-semibold">Free</div>
+            <p className="mt-2 text-white/80">3 prompts/day. Core features.</p>
+          </div>
+          <div className="glass rounded-3xl p-6 border border-fuchsia-500/30">
+            <div className="text-lg font-semibold">Promo (3 mo)</div>
+            <p className="mt-2 text-white/80">$25 total. Unlimited prompts.</p>
+          </div>
+          <div className="glass rounded-3xl p-6">
+            <div className="text-lg font-semibold">Pro</div>
+            <p className="mt-2 text-white/80">$12/mo or $99/yr. Advanced tools + history.</p>
+          </div>
+        </div>
+      </section>
+
       <FooterTicker/>
+
     </div>
   )
 }
