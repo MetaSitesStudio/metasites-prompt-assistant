@@ -10,3 +10,42 @@
 .ticker{ position:fixed; left:0; right:0; bottom:0; height:36px; display:flex; align-items:center; background:rgba(0,0,0,.55); border-top:1px solid rgba(255,255,255,.08); overflow:hidden; z-index:50; }
 .ticker .track{ white-space:nowrap; will-change:transform; animation:tkr 22s linear infinite; }
 @keyframes tkr { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+/* animated aurora bg */
+.aurora {
+  background:
+    radial-gradient(1200px 600px at 90% 10%, rgba(99,102,241,.18), transparent 60%),
+    radial-gradient(900px 500px at 10% 90%, rgba(192,132,252,.20), transparent 60%),
+    #0a0a0a;
+  animation: aurora-move 16s ease-in-out infinite alternate;
+  filter: saturate(1.1);
+}
+@keyframes aurora-move {
+  0%   { transform: translateY(-6px) translateX(0); }
+  100% { transform: translateY(6px)  translateX(8px); }
+}
+
+/* buttons matching your palette */
+.btn-primary{
+  @apply rounded-2xl px-5 py-3 bg-gradient-to-r from-fuchsia-500 to-indigo-500 text-white;
+}
+.btn-ghost{
+  @apply rounded-2xl px-5 py-3 border border-white/20 bg-white/5 hover:bg-white/10 text-white;
+}
+
+/* subtle CTA glow ring */
+.ring-glow { box-shadow: 0 0 0 0 rgba(168,85,247,.5); transition: box-shadow .25s ease; }
+.ring-glow:hover { box-shadow: 0 0 0 6px rgba(168,85,247,.18); }
+
+/* progress meter placeholder (Step 2 will control via JS) */
+.meter-track{ width:220px; height:6px; background:rgba(255,255,255,.12); border-radius:999px; overflow:hidden; }
+.meter-fill{ height:100%; background:linear-gradient(90deg,#a855f7,#6366f1); }
+
+/* feature cards: gradient edge + lift on hover */
+.feature-card{ position: relative; }
+.feature-card .feature-border{
+  position:absolute; inset:-1px; border-radius:1.5rem;
+  background: linear-gradient(90deg, rgba(168,85,247,.35), rgba(99,102,241,.35));
+  filter: blur(6px); opacity:.25; transition: opacity .25s ease, filter .25s ease;
+}
+.feature-card:hover .feature-border{ opacity:.45; filter: blur(10px); }
+.feature-card:hover .glass{ transform: translateY(-2px); transition: transform .2s ease; }
