@@ -7,7 +7,7 @@ export default function Landing(){
       <Navbar/>
       <section className="max-w-7xl mx-auto px-4 lg:px-8 pt-20 pb-24 grid lg:grid-cols-2 gap-10 items-center">
         <div className="reveal">
-          <h1 className="text-5xl font-extrabold leading-tight">Your AI Co Pilot — from first prompt to <span className="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-300 to-indigo-300">pro‟level results</span>.</h1>
+          <h1 className="text-5xl font-extrabold leading-tight">Your AI Co Pilot — from first prompt to <span className="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-300 to-indigo-300">pro‟level results</span>.</h1>
           <p className="mt-6 text-white/80 max-w-xl">Describe your goal. The assistant crafts questions, builds an enhanced prompt, and gives you variations & a test drive.</p>
           <div className="mt-8 flex gap-3">
             <Link to="/app" className="rounded-2xl px-5 py-3 bg-gradient-to-r from-fuchsia-500 to-indigo-500">Start Free</Link>
@@ -73,6 +73,25 @@ export default function Landing(){
             <div className="text-lg font-semibold">Pro</div>
             <p className="mt-2 text-white/80">$12/mo or $99/yr. Advanced tools + history.</p>
           </div>
+        </div>
+      </section>
+
+      {/* --- FAQ --- */}
+      <section id="faq" className="max-w-7xl mx-auto px-4 lg:px-8 pb-24">
+        <h2 className="text-3xl font-bold">FAQ</h2>
+        <div className="mt-6 space-y-4">
+          <details className="glass rounded-3xl p-6">
+            <summary className="cursor-pointer text-lg font-semibold">Do I need AI experience?</summary>
+            <p className="mt-2 text-white/80">No. Just describe your goal; the assistant asks clarifying questions and builds the prompt.</p>
+          </details>
+          <details className="glass rounded-3xl p-6">
+            <summary className="cursor-pointer text-lg font-semibold">Which models/tools does it work with?</summary>
+            <p className="mt-2 text-white/80">Use the generated prompts in ChatGPT, Gemini, Midjourney, etc. Native integrations are coming.</p>
+          </details>
+          <details className="glass rounded-3xl p-6">
+            <summary className="cursor-pointer text-lg font-semibold">What do I get on Pro?</summary>
+            <p className="mt-2 text-white/80">Unlimited generations, advanced tools, and saved history.</p>
+          </details>
         </div>
       </section>
 
