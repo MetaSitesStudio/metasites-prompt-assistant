@@ -1,0 +1,12 @@
+@tailwind base; @tailwind components; @tailwind utilities;
+:root{ --g1:#c084fc; --g2:#a78bfa; }
+.bg-aurora{ background:
+  radial-gradient(1200px 600px at 90% 10%, rgba(99,102,241,.18), transparent 60%),
+  radial-gradient(900px 500px at 10% 90%, rgba(192,132,252,.20), transparent 60%),
+  #0a0a0a; }
+.glass{ background:rgba(255,255,255,.06); backdrop-filter: blur(14px); border:1px solid rgba(255,255,255,.12); }
+.reveal{opacity:0; transform:translateY(12px); transition:.6s ease;} .reveal.show{opacity:1; transform:translateY(0);}
+.lift{ transition:transform .2s ease, box-shadow .2s ease; } .lift:hover{ transform:translateY(-2px); box-shadow:0 10px 30px rgba(192,132,252,.15); }
+.ticker{ position:fixed; left:0; right:0; bottom:0; height:36px; display:flex; align-items:center; background:rgba(0,0,0,.55); border-top:1px solid rgba(255,255,255,.08); overflow:hidden; z-index:50; }
+.ticker .track{ white-space:nowrap; will-change:transform; animation:tkr 22s linear infinite; }
+@keyframes tkr { from{transform:translateX(0)} to{transform:translateX(-50%)} }
