@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom'
+
 export default function Navbar(){
   return (
     <header className="sticky top-0 z-40 border-b border-white/10 bg-black/40 backdrop-blur">
       <nav className="max-w-7xl mx-auto h-16 px-4 lg:px-8 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
-          <img src="/logo.png" className="w-7 h-7"/>
+          <img src="/logo.png" alt="MetaSites Studio logo" className="w-7 h-7"/>
           <span className="font-semibold tracking-tight">MetaSites Studio</span>
           <span className="text-white/50">Prompt Assistant</span>
         </Link>
