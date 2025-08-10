@@ -22,22 +22,11 @@ export const handler = async (event) => {
       contents: [{ parts: [{ text: prompt }] }]
     };
 
-    const res = await fetch(url, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body)
-    });
-
-    if (!res.ok) return err(`Upstream ${res.status}`, res.status);
-
-    const data = await res.json();
-    const text =
-      (data.candidates?.[0]?.content?.parts?.[0]?.text || "")
-        .replace(/\s+/g, " ")
-        .trim()
-        .slice(0, 800);
-
-    return ok({ prompt: text || "" });
+    const r = await fetch(url, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
+    if (!r.ok) return err(`Upstream ${r.status}`, r.status);
+    const data = await r.json();
+    const text = (data.candidates?.[0]?.content?.parts?.[0]?.text || "").replace(/\s+/g, " ").trim().slice(0, 800);
+    return ok({ prompt: text });
   } catch (e) {
     return err(String(e), 500);
   }
@@ -48,5 +37,5 @@ const headers = {
   "Access-Control-Allow-Headers": "content-type",
   "Access-Control-Allow-Methods": "POST, OPTIONS",
 };
-const ok  = (body, code=200) => ({ statusCode: code, headers, body: JSON.stringify(body) });
-const err = (msg, code=500)   => ok({ error: msg }, code);
+const ok  = (b, c=200) => ({ statusCode: c, headers, body: JSON.stringify(b) });
+const err = (m, c=500) => ok({ error: m }, c);
