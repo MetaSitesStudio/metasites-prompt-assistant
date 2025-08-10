@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import Navbar from '../components/Navbar'
 import FooterTicker from '../components/FooterTicker'
 import { Link } from 'react-router-dom'
-import { generatePrompt } from '../generatePrompt'
+import { generatePrompt } from '../lib/generatePrompt'
 
 const cardVariants = {
   hidden: { opacity: 0, y: 16 },
@@ -191,7 +191,7 @@ export default function Landing(){
               <div className="text-5xl font-extrabold text-white/70 group-hover:text-white/90 transition">{s.step}</div>
               <div className="mt-3 text-xl font-semibold">{s.title}</div>
               <p className="mt-2 text-white/80">{s.desc}</p>
-            </motion.div>
+            </div>
           ))}
         </div>
       </section>
@@ -246,7 +246,11 @@ export default function Landing(){
             className="rounded-3xl p-6 bg-white/5 border border-white/10 hover:bg-white/10 transition"
           >
             <div className="text-lg font-semibold">Pro</div>
-            <div className="mt-2 text-3xl font-extrabold">$12<span className="text-white/70 text-base">/mo</span> <span className="text-white/50 text-base">or</span> $99<span className="text-white/70 text-base">/yr</span></div>
+            <div className="mt-2 text-3xl font-extrabold">
+              $12<span className="text-white/70 text-base">/mo</span>
+              <span className="text-white/50 text-base"> or </span>
+              $99<span className="text-white/70 text-base">/yr</span>
+            </div>
             <ul className="mt-4 space-y-2 text-white/80 text-sm">
               <li>• Unlimited prompts</li>
               <li>• Project history & tags</li>
@@ -279,44 +283,6 @@ export default function Landing(){
       </section>
 
       <FooterTicker/>
-    </div>
-  )
-}
-            <div className="text-lg font-semibold">Free</div>
-            <p className="mt-2 text-white/80">3 prompts/day. Core features.</p>
-          </div>
-          <div className="glass rounded-3xl p-6 border border-fuchsia-500/30">
-            <div className="text-lg font-semibold">Promo (3 mo)</div>
-            <p className="mt-2 text-white/80">$25 total. Unlimited prompts.</p>
-          </div>
-          <div className="glass rounded-3xl p-6">
-            <div className="text-lg font-semibold">Pro</div>
-            <p className="mt-2 text-white/80">$12/mo or $99/yr. Advanced tools + history.</p>
-          </div>
-        </div>
-      </section>
-
-      {/* --- FAQ --- */}
-      <section id="faq" className="max-w-7xl mx-auto px-4 lg:px-8 pb-24">
-        <h2 className="text-3xl font-bold">FAQ</h2>
-        <div className="mt-6 space-y-4">
-          <details className="glass rounded-3xl p-6">
-            <summary className="cursor-pointer text-lg font-semibold">Do I need AI experience?</summary>
-            <p className="mt-2 text-white/80">No. Just describe your goal; the assistant asks clarifying questions and builds the prompt.</p>
-          </details>
-          <details className="glass rounded-3xl p-6">
-            <summary className="cursor-pointer text-lg font-semibold">Which models/tools does it work with?</summary>
-            <p className="mt-2 text-white/80">Use the generated prompts in ChatGPT, Gemini, Midjourney, etc. Native integrations are coming.</p>
-          </details>
-          <details className="glass rounded-3xl p-6">
-            <summary className="cursor-pointer text-lg font-semibold">What do I get on Pro?</summary>
-            <p className="mt-2 text-white/80">Unlimited generations, advanced tools, and saved history.</p>
-          </details>
-        </div>
-      </section>
-
-      <FooterTicker/>
-
     </div>
   )
 }
