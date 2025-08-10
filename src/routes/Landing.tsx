@@ -11,7 +11,6 @@ const cardVariants = {
 }
 
 export default function Landing(){
-  // Source idea for demo preview
   const [idea] = useState('Write a persuasive email inviting customers to try our new product.')
   const [refined, setRefined] = useState<string>('')
   const [loading, setLoading] = useState<boolean>(false)
@@ -108,36 +107,12 @@ export default function Landing(){
 
         <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {[
-            {
-              title: 'Smart Follow-ups',
-              desc: 'Auto-questions narrow scope, audience, format, and tone in seconds.',
-              icon: '🤖'
-            },
-            {
-              title: 'Enhanced Prompt Builder',
-              desc: 'Merges your answers into a clear, execution-ready master prompt.',
-              icon: '🧩'
-            },
-            {
-              title: 'One-Click Variations',
-              desc: 'Get 3–6 alternate angles: persuasive, technical, storytelling, etc.',
-              icon: '🎛️'
-            },
-            {
-              title: 'Test Drive',
-              desc: 'Preview sample outputs instantly before you copy or run them elsewhere.',
-              icon: '🚗'
-            },
-            {
-              title: 'History & Save',
-              desc: 'Keep your best prompts, tag by project, and re-use with one tap.',
-              icon: '📚'
-            },
-            {
-              title: 'Multi-Model Friendly',
-              desc: 'Works great with ChatGPT, Gemini, Midjourney — your choice.',
-              icon: '🧠'
-            }
+            { title: 'Smart Follow-ups', desc: 'Auto-questions narrow scope, audience, format, and tone in seconds.', icon: '🤖' },
+            { title: 'Enhanced Prompt Builder', desc: 'Merges your answers into a clear, execution-ready master prompt.', icon: '🧩' },
+            { title: 'One-Click Variations', desc: 'Get 3–6 alternate angles: persuasive, technical, storytelling, etc.', icon: '🎛️' },
+            { title: 'Test Drive', desc: 'Preview sample outputs instantly before you copy or run them elsewhere.', icon: '🚗' },
+            { title: 'History & Save', desc: 'Keep your best prompts, tag by project, and re-use with one tap.', icon: '📚' },
+            { title: 'Multi-Model Friendly', desc: 'Works great with ChatGPT, Gemini, Midjourney — your choice.', icon: '🧠' }
           ].map((f, i) => (
             <motion.div
               key={f.title}
@@ -163,21 +138,9 @@ export default function Landing(){
         <h2 className="text-3xl font-bold">How it works</h2>
         <div className="mt-6 grid md:grid-cols-3 gap-6">
           {[
-            {
-              step: '1',
-              title: 'Describe',
-              desc: 'Type your goal in plain language. No template needed.'
-            },
-            {
-              step: '2',
-              title: 'Refine',
-              desc: 'Answer quick follow-ups; we assemble a precise, high-quality prompt.'
-            },
-            {
-              step: '3',
-              title: 'Launch',
-              desc: 'Copy the prompt, try variations, or run a lightning test drive.'
-            }
+            { step: '1', title: 'Describe', desc: 'Type your goal in plain language. No template needed.' },
+            { step: '2', title: 'Refine', desc: 'Answer quick follow-ups; we assemble a precise, high-quality prompt.' },
+            { step: '3', title: 'Launch', desc: 'Copy the prompt, try variations, or run a lightning test drive.' }
           ].map((s, i) => (
             <motion.div
               key={s.step}
@@ -191,7 +154,7 @@ export default function Landing(){
               <div className="text-5xl font-extrabold text-white/70 group-hover:text-white/90 transition">{s.step}</div>
               <div className="mt-3 text-xl font-semibold">{s.title}</div>
               <p className="mt-2 text-white/80">{s.desc}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </section>
@@ -228,7 +191,7 @@ export default function Landing(){
           >
             <div className="text-lg font-semibold">Promo (3 months)</div>
             <div className="mt-2 text-3xl font-extrabold">$25</div>
-            <ul className="mt-4 space-y-2 text-white/85 text-sm">
+            <ul className="mt-4 space-y-2 text-white/80 text-sm">
               <li>• Unlimited prompts</li>
               <li>• Test Drive included</li>
               <li>• Early access features</li>
@@ -263,7 +226,7 @@ export default function Landing(){
         </div>
       </section>
 
-      {/* FAQ (kept) */}
+      {/* FAQ */}
       <section id="faq" className="max-w-7xl mx-auto px-4 lg:px-8 pb-24">
         <h2 className="text-3xl font-bold">FAQ</h2>
         <div className="mt-6 space-y-4">
