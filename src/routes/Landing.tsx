@@ -1,9 +1,7 @@
-import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Navbar from '../components/Navbar'
 import FooterTicker from '../components/FooterTicker'
 import { Link } from 'react-router-dom'
-import { generatePrompt } from '../lib/generatePrompt'
 
 const cardVariants = {
   hidden: { opacity: 0, y: 16 },
@@ -11,24 +9,6 @@ const cardVariants = {
 }
 
 export default function Landing(){
-  const [idea] = useState('Write a persuasive email inviting customers to try our new product.')
-  const [refined, setRefined] = useState<string>('')
-  const [loading, setLoading] = useState<boolean>(false)
-  const [error, setError] = useState<string>('')
-
-  const handleGenerate = async () => {
-    try {
-      setLoading(true); setError(''); setRefined('')
-      const res = await generatePrompt(idea)
-      setRefined(res.prompt || '')
-    } catch (e:any) {
-      setError('Generation failed. Please try again.')
-      console.error(e)
-    } finally {
-      setLoading(false)
-    }
-  }
-
   return (
     <div className="bg-aurora min-h-screen">
       <Navbar/>
@@ -56,7 +36,7 @@ export default function Landing(){
           </div>
         </div>
 
-        {/* Live Preview Card */}
+        {/* Demo Video Card */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
@@ -64,38 +44,20 @@ export default function Landing(){
           className="reveal"
         >
           <div className="glass rounded-3xl p-6">
-            <div className="text-sm text-white/70">Live Prompt Preview</div>
-
-            <div className="mt-3 rounded-2xl bg-black/50 border border-white/10 p-4 text-sm">
-              <div className="text-white/80">Goal:</div>
-              <div className="mt-1 text-white/90">“{idea}”</div>
-
-              <div className="mt-4 text-white/80">Assistant Suggests:</div>
-              <ul className="mt-1 list-disc list-inside space-y-1 text-white/90">
-                <li>Audience: last-6-months buyers</li>
-                <li>Tone: friendly, benefit-driven</li>
-                <li>CTA: Start your 7-day free trial</li>
-              </ul>
-
-              <button
-                onClick={handleGenerate}
-                disabled={loading}
-                className="mt-4 inline-block w-full text-center rounded-xl px-4 py-2 bg-gradient-to-r from-fuchsia-500 to-indigo-500 hover:brightness-110 disabled:opacity-60 transition"
+            <div className="text-sm text-white/70">30-second demo</div>
+            <div className="mt-3 rounded-2xl bg-black/50 border border-white/10 p-0 overflow-hidden">
+              <video
+                className="w-full h-[360px] object-cover"
+                playsInline
+                muted
+                controls
+                preload="metadata"
+                // Add a poster image to /public as demo-poster.jpg if you want a thumbnail:
+                // poster="/demo-poster.jpg"
               >
-                {loading ? 'Generating…' : 'Generate Optimized Prompt'}
-              </button>
-
-              {refined && (
-                <div className="mt-4 p-3 rounded-xl bg-white/5 border border-white/10 text-white/90">
-                  <div className="text-white/70 mb-1">Refined Prompt:</div>
-                  <div>{refined}</div>
-                </div>
-              )}
-              {error && (
-                <div className="mt-4 p-3 rounded-xl bg-red-500/10 border border-red-500/30 text-red-200">
-                  {error}
-                </div>
-              )}
+                <source src="/demo.mp4" type="video/mp4" />
+                Sorry, your browser doesn’t support embedded videos.
+              </video>
             </div>
           </div>
         </motion.div>
