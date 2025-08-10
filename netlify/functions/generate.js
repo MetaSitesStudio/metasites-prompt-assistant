@@ -5,21 +5,27 @@ export const handler = async (event) => {
     if (event.httpMethod === "OPTIONS") return ok({}, 204);
     if (event.httpMethod !== "POST")   return err("Use POST", 405);
 
-    const { prompt, model = "gemini-2.5-flash", system } = JSON.parse(event.body || "{}");
+    const { prompt, model = "gemini-2.5-flash" } = JSON.parse(event.body || "{}");
     if (!prompt) return err("Missing 'prompt'", 400);
 
-    const ai = new GoogleGenAI(); // reads process.env.GEMINI_API_KEY
-    const sys = system ?? "Refine the user's idea into ONE concise, high-quality prompt. Return ONLY the prompt text.";
+    const apiKey = process.env.GEMINI_API_KEY || process.env.GOOGLE_GEMINI_API_KEY;
+    if (!apiKey) return err("Missing GEMINI API key in env", 500);
+
+    const ai = new GoogleGenAI({ apiKey });
+
+    const systemInstruction =
+      "You refine rough ideas into ONE concise, high-quality prompt. " +
+      "Output EXACTLY one line of plain text. No code blocks, no quotes, no markdown, no explanations.";
 
     const result = await ai.models.generateContent({
       model,
-      contents: [
-        { role: "system", parts: [{ text: sys }] },
-        { role: "user",   parts: [{ text: prompt }] }
-      ]
+      systemInstruction,
+      contents: [{ role: "user", parts: [{ text: prompt }] }],
     });
 
-    const text = (result.text || "").trim();
+    let text = (result.text || "").replace(/\s+/g, " ").trim();
+    if (text.length > 800) text = text.slice(0, 800);
+
     return ok({ prompt: text });
   } catch (e) {
     return err(String(e), 500);
